@@ -185,8 +185,6 @@ export const getCareer = async (req, res) => {
         }`,
       });
     }
-    career.type = jobTypeMapping[career.type];
-    career.location_type = locationTypeMapping[career.location_type];
 
     successResponse(res, 200, "Successfully get career!", career);
   } catch (error) {
