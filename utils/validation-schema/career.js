@@ -8,7 +8,7 @@ export const createCareerSchema = [
   body("location_type").isString().notEmpty().escape().trim(),
   body("type").isString().notEmpty().escape().trim(),
   body("start_date").isString().notEmpty().trim(),
-  body("end_date").isString().notEmpty().trim(),
+  body("end_date").isString().trim(),
   body("link").isString().notEmpty().trim(),
 ];
 
@@ -21,7 +21,7 @@ export const updateCareerSchema = [
   body("location_type").isString().notEmpty().escape().trim(),
   body("type").isString().notEmpty().escape().trim(),
   body("start_date").isString().notEmpty().trim(),
-  body("end_date").isString().notEmpty().trim(),
+  body("end_date").isString().trim(),
   body("link").isString().notEmpty().trim(),
 ];
 
