@@ -20,10 +20,12 @@ function apiResponse(status, statusCode, message, data = null, error = null) {
 }
 
 // Success response handler
-export function successResponse(res, statusCode, message, data = {}) {
+export async function successResponse(res, statusCode, message, data = {}) {
   res
     .status(statusCode)
-    .json(apiResponse("success", statusCode, message, filteredResponse(data)));
+    .json(
+      apiResponse("success", statusCode, message, await filteredResponse(data))
+    );
 }
 
 // Error response handler
