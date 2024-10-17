@@ -29,7 +29,7 @@ router.delete(
   careerController.deleteCareer
 );
 router.get("/", authenticateToken, careerController.getAllCareers);
-router.get("/home", careerController.getAllCareersHome);
+router.get("/home", careerController.getAllCareers);
 router.get(
   "/:uuid",
   authenticateToken,
