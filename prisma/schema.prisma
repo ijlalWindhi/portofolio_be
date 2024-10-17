@@ -26,15 +26,20 @@ model Certificate {
 }
 
 model Project {
-  id           Int       @id @default(autoincrement())
-  uuid         String    @unique @db.VarChar(255)
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
-  deletedAt    DateTime?
-  title        String    @db.VarChar(255)
-  description  String    @db.Text
-  url_cover    String    @db.VarChar(255)
-  technologies String[]
+  id                Int       @id @default(autoincrement())
+  uuid              String    @unique @db.VarChar(255)
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  deletedAt         DateTime?
+  title             String    @db.VarChar(255)
+  description       String    @db.Text
+  url_cover         String    @db.VarChar(255)
+  technologies      String[]
+  slug              String    @unique @db.VarChar(255)
+  url_demo          String?   @db.VarChar(255)
+  url_github        String?   @db.VarChar(255)
+  under_development Boolean
+  status            Status
 }
 
 model Career {
@@ -100,4 +105,9 @@ enum JobType {
 
 enum Role {
   admin
+}
+
+enum Status {
+  active
+  inactive
 }
