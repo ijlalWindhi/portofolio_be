@@ -14,26 +14,27 @@ router.post(
   "/",
   authenticateToken,
   createCertificateSchema,
-  certificateController.createCertificate,
+  certificateController.createCertificate
 );
 router.put(
   "/:uuid",
   authenticateToken,
   updateCertificateSchema,
-  certificateController.updateCertificate,
+  certificateController.updateCertificate
 );
 router.delete(
   "/:uuid",
   authenticateToken,
   paramsCertificateSchema,
-  certificateController.deleteCertificate,
+  certificateController.deleteCertificate
 );
 router.get("/", authenticateToken, certificateController.getAllCertificates);
+router.get("/home", certificateController.getAllCertificates);
 router.get(
   "/:uuid",
   authenticateToken,
   paramsCertificateSchema,
-  certificateController.getCertificate,
+  certificateController.getCertificate
 );
 
 export default router;

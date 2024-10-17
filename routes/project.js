@@ -13,26 +13,27 @@ router.post(
   "/",
   authenticateToken,
   createProjectSchema,
-  projectController.createProject,
+  projectController.createProject
 );
 router.put(
   "/:uuid",
   authenticateToken,
   updateProjectSchema,
-  projectController.updateProject,
+  projectController.updateProject
 );
 router.delete(
   "/:uuid",
   authenticateToken,
   paramsProjectSchema,
-  projectController.deleteProject,
+  projectController.deleteProject
 );
 router.get("/", authenticateToken, projectController.getAllProjects);
+router.get("/home", projectController.getAllProjects);
 router.get(
   "/:uuid",
   authenticateToken,
   paramsProjectSchema,
-  projectController.getProject,
+  projectController.getProject
 );
 
 export default router;
