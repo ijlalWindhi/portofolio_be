@@ -29,7 +29,7 @@ router.delete(
   projectController.deleteProject
 );
 router.get("/", authenticateToken, projectController.getAllProjects);
-router.get("/home", projectController.getAllProjects);
+router.get("/home", projectController.getAllProjectsHome);
 router.get("/:uuid", paramsProjectSchema, projectController.getProject);
 router.get(
   "/slug/:slug",
