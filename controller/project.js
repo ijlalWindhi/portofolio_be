@@ -22,6 +22,11 @@ export const createProject = async (req, res) => {
           description: data.description,
           url_cover: data.url_cover,
           technologies: data.technologies,
+          slug: data.slug,
+          url_demo: data.url_demo,
+          url_github: data.url_github,
+          under_development: data.under_development,
+          status: data.status,
         },
       });
 
@@ -69,6 +74,11 @@ export const updateProject = async (req, res) => {
           description: data.description,
           url_cover: data.url_cover,
           technologies: data.technologies,
+          slug: data.slug,
+          url_demo: data.url_demo,
+          url_github: data.url_github,
+          under_development: data.under_development,
+          status: data.status,
         },
       });
 
@@ -144,6 +154,34 @@ export const getProject = async (req, res) => {
     const project = await prisma.project.findUnique({
       where: {
         uuid,
+      },
+    });
+
+    if (!project || project.deletedAt !== null) {
+      return errorResponse(res, 404, "Data not found", {
+        code: "DATA_NOT_FOUND",
+        error: `Project with uuid ${uuid} ${
+          project.deletedAt !== null ? "has been deleted" : "not found"
+        }`,
+      });
+    }
+
+    successResponse(res, 200, "Successfully get project!", project);
+  } catch (error) {
+    errorResponse(res, 500, "Internal server error", {
+      code: "INTERNAL_SERVER_ERROR",
+      error: error,
+    });
+  }
+};
+
+export const getProjectBySlug = async (req, res) => {
+  try {
+    const { slug } = req.params;
+
+    const project = await prisma.project.findUnique({
+      where: {
+        slug,
       },
     });
 

@@ -4,6 +4,7 @@ import {
   createProjectSchema,
   updateProjectSchema,
   paramsProjectSchema,
+  paramsTitleSchema,
 } from "../utils/validation-schema/project.js";
 import { authenticateToken } from "../middleware/auth.js";
 
@@ -29,11 +30,11 @@ router.delete(
 );
 router.get("/", authenticateToken, projectController.getAllProjects);
 router.get("/home", projectController.getAllProjects);
+router.get("/:uuid", paramsProjectSchema, projectController.getProject);
 router.get(
-  "/:uuid",
-  authenticateToken,
-  paramsProjectSchema,
-  projectController.getProject
+  "/slug/:slug",
+  paramsTitleSchema,
+  projectController.getProjectBySlug
 );
 
 export default router;
