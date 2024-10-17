@@ -1,3 +1,5 @@
+import { filteredResponse } from "./filteredRespons.js";
+
 function apiResponse(status, statusCode, message, data = null, error = null) {
   const response = {
     status,
@@ -21,7 +23,7 @@ function apiResponse(status, statusCode, message, data = null, error = null) {
 export function successResponse(res, statusCode, message, data = {}) {
   res
     .status(statusCode)
-    .json(apiResponse("success", statusCode, message, data));
+    .json(apiResponse("success", statusCode, message, filteredResponse(data)));
 }
 
 // Error response handler
