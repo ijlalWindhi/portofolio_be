@@ -147,6 +147,27 @@ export const getAllProjects = async (_req, res) => {
   }
 };
 
+export const getAllProjectsHome = async (_req, res) => {
+  try {
+    const projects = await prisma.project.findMany({
+      where: {
+        deletedAt: null,
+        status: "active",
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+
+    successResponse(res, 200, "Successfully get all projects!", projects);
+  } catch (error) {
+    errorResponse(res, 500, "Internal server error", {
+      code: "INTERNAL_SERVER_ERROR",
+      error: error,
+    });
+  }
+};
+
 export const getProject = async (req, res) => {
   try {
     const { uuid } = req.params;
