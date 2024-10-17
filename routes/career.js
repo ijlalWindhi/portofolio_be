@@ -14,26 +14,27 @@ router.post(
   "/",
   authenticateToken,
   createCareerSchema,
-  careerController.createCareer,
+  careerController.createCareer
 );
 router.put(
   "/:uuid",
   authenticateToken,
   updateCareerSchema,
-  careerController.updateCareer,
+  careerController.updateCareer
 );
 router.delete(
   "/:uuid",
   authenticateToken,
   paramsCareerSchema,
-  careerController.deleteCareer,
+  careerController.deleteCareer
 );
 router.get("/", authenticateToken, careerController.getAllCareers);
+router.get("/home", careerController.getAllCareersHome);
 router.get(
   "/:uuid",
   authenticateToken,
   paramsCareerSchema,
-  careerController.getCareer,
+  careerController.getCareer
 );
 
 export default router;

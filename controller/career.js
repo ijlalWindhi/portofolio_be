@@ -167,6 +167,35 @@ export const getAllCareers = async (_req, res) => {
   }
 };
 
+export const getAllCareersHome = async (_req, res) => {
+  try {
+    const careers = await prisma.career.findMany({
+      where: {
+        deletedAt: null,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+    careers.map((career) => {
+      career.type = jobTypeMapping[career.type];
+      career.location_type = locationTypeMapping[career.location_type];
+    });
+
+    const filteredCareers = careers.map((career) => {
+      const { id, createdAt, updatedAt, deletedAt, ...rest } = career;
+      return rest;
+    });
+
+    successResponse(res, 200, "Successfully get all careers!", filteredCareers);
+  } catch (error) {
+    errorResponse(res, 500, "Internal server error", {
+      code: "INTERNAL_SERVER_ERROR",
+      error: error,
+    });
+  }
+};
+
 export const getCareer = async (req, res) => {
   try {
     const { uuid } = req.params;
