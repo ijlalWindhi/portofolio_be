@@ -15,6 +15,7 @@ const corsOptions = {
 
     const isWhitelisted = whiteList.some((domain) => {
       const match = origin === domain;
+      console.log(origin, domain, match);
       console.log(`Checking ${origin} against ${domain}: ${match}`);
       return match;
     });
