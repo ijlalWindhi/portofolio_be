@@ -1,7 +1,6 @@
 import cors from "cors";
 
 const whiteList = process.env.CORS_WHITELIST.split(",");
-// trigger deploy
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -15,7 +14,6 @@ const corsOptions = {
 
     const isWhitelisted = whiteList.some((domain) => {
       const match = origin === domain;
-      console.log(origin, domain, match);
       console.log(`Checking ${origin} against ${domain}: ${match}`);
       return match;
     });
