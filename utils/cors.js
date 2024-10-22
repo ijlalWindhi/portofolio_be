@@ -4,6 +4,7 @@ const whiteList = process.env.CORS_WHITELIST.split(",");
 
 const corsOptions = {
   origin: function (origin, callback) {
+    console.log("WhiteList:", whiteList);
     console.log("Request from origin:", origin);
 
     if (!origin) {
