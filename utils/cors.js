@@ -1,6 +1,7 @@
 import cors from "cors";
 
 const whiteList = process.env.CORS_WHITELIST.split(",");
+// trigger deploy
 
 const corsOptions = {
   origin: function (origin, callback) {
