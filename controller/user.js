@@ -191,11 +191,11 @@ export const getUser = async (req, res) => {
       },
     });
 
-    if (!user || user.deletedAt !== null) {
+    if (!user || user?.deletedAt !== null) {
       return errorResponse(res, 404, "Data not found", {
         code: "DATA_NOT_FOUND",
         error: `User with uuid ${uuid} ${
-          user.deletedAt !== null ? "has been deleted" : "not found"
+          user?.deletedAt !== null ? "has been deleted" : "not found"
         }`,
       });
     }

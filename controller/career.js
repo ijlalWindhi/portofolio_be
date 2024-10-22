@@ -177,11 +177,11 @@ export const getCareer = async (req, res) => {
       },
     });
 
-    if (!career || career.deletedAt !== null) {
+    if (!career || career?.deletedAt !== null) {
       return errorResponse(res, 404, "Data not found", {
         code: "DATA_NOT_FOUND",
         error: `Career with uuid ${uuid} ${
-          career.deletedAt !== null ? "has been deleted" : "not found"
+          career?.deletedAt !== null ? "has been deleted" : "not found"
         }`,
       });
     }

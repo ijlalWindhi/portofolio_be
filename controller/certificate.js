@@ -27,7 +27,7 @@ export const createCertificate = async (req, res) => {
         res,
         201,
         "Successfully create certificate!",
-        certificate,
+        certificate
       );
     }
   } catch (error) {
@@ -77,7 +77,7 @@ export const updateCertificate = async (req, res) => {
         res,
         200,
         "Successfully update certificate!",
-        certificate,
+        certificate
       );
     }
   } catch (error) {
@@ -138,7 +138,7 @@ export const getAllCertificates = async (_req, res) => {
       res,
       200,
       "Successfully get all certificates!",
-      certificates,
+      certificates
     );
   } catch (error) {
     errorResponse(res, 500, "Internal server error", {
@@ -158,11 +158,11 @@ export const getCertificate = async (req, res) => {
       },
     });
 
-    if (!certificate || certificate.deletedAt !== null) {
+    if (!certificate || certificate?.deletedAt !== null) {
       return errorResponse(res, 404, "Data not found", {
         code: "DATA_NOT_FOUND",
         error: `Certificate with uuid ${uuid} ${
-          certificate.deletedAt !== null ? "has been deleted" : "not found"
+          certificate?.deletedAt !== null ? "has been deleted" : "not found"
         }`,
       });
     }

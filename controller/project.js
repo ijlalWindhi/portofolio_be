@@ -178,11 +178,11 @@ export const getProject = async (req, res) => {
       },
     });
 
-    if (!project || project.deletedAt !== null) {
+    if (!project || project?.deletedAt !== null) {
       return errorResponse(res, 404, "Data not found", {
         code: "DATA_NOT_FOUND",
         error: `Project with uuid ${uuid} ${
-          project.deletedAt !== null ? "has been deleted" : "not found"
+          project?.deletedAt !== null ? "has been deleted" : "not found"
         }`,
       });
     }
@@ -206,11 +206,11 @@ export const getProjectBySlug = async (req, res) => {
       },
     });
 
-    if (!project || project.deletedAt !== null) {
+    if (!project || project?.deletedAt !== null) {
       return errorResponse(res, 404, "Data not found", {
         code: "DATA_NOT_FOUND",
         error: `Project with uuid ${uuid} ${
-          project.deletedAt !== null ? "has been deleted" : "not found"
+          project?.deletedAt !== null ? "has been deleted" : "not found"
         }`,
       });
     }
