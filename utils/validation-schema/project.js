@@ -19,8 +19,8 @@ export const updateProjectSchema = [
   body("url_cover").isString().notEmpty().trim(),
   body("technologies").isArray().notEmpty(),
   body("slug").isString().notEmpty().escape().trim(),
-  body("url_demo").optional().isString().trim(),
-  body("url_github").optional().isString().trim(),
+  body("url_demo").optional({ nullable: true }).isString().trim(),
+  body("url_github").optional({ nullable: true }).isString().trim(),
   body("under_development").isBoolean(),
   body("status").isString().notEmpty().escape().trim(),
 ];
