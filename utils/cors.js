@@ -1,6 +1,6 @@
 import cors from "cors";
 
-const whiteList = process.env.CORS_WHITELIST.split(",");
+const whiteList = process.env.CORS_WHITELIST?.split(",");
 
 const corsOptions = {
   origin: function (origin, callback) {
